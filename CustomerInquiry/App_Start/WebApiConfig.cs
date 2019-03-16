@@ -1,7 +1,9 @@
-﻿using System;
+﻿using CustomerInquiry.IoC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Unity;
 
 namespace CustomerInquiry
 {
@@ -9,7 +11,12 @@ namespace CustomerInquiry
     {
         public static void Register(HttpConfiguration config)
         {
+            // Initialize the unity container with required interface mapping.
+            var container = new UnityContainer();
+            UnityHelper.InitializeDependencyContainer(container);
+
             // Web API configuration and services
+            config.DependencyResolver = new UnityDependencyResolver(container);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
