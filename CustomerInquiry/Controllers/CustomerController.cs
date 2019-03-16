@@ -11,7 +11,6 @@ namespace CustomerInquiry.Controllers
     /// <summary>
     /// API controller for Customer related methods
     /// </summary>
-    //[RoutePrefix("api")]
     public class CustomerController : ApiController
     {
         private readonly ICustomerAdapter customerAdapter;
@@ -43,7 +42,7 @@ namespace CustomerInquiry.Controllers
         /// Customer with his Transactions in System.
         /// </returns>
         [HttpGet]
-        //[Route("customer/{customerID}")]
+        [Route("api/customer/{customerID}")]
         public IHttpActionResult GetCustomer(int? customerID, string email = null)
         {
             if (customerID is null && String.IsNullOrWhiteSpace(email))

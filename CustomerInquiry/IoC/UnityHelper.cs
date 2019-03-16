@@ -19,7 +19,7 @@ namespace CustomerInquiry.IoC
         /// <summary>
         /// Initialize the unity container with required interface mapping.
         /// </summary>
-        /// <param name="container">unity container.</param>
+        /// <param name="container">Unity container.</param>
         public static void InitializeDependencyContainer(IUnityContainer container)
         {
             container.AddExtension(new ApiUnityContainerExtension());

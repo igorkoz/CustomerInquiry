@@ -1,4 +1,6 @@
 ﻿using CustomerInquiry.Adapters;
+using CustomerInquiryBusiness.Managers;
+using CustomerInquiryDataService.Repositories;
 using Unity;
 using Unity.Extension;
 using Unity.Injection;
@@ -17,6 +19,8 @@ namespace CustomerInquiry.IoC
         protected override void Initialize()
         {
             this.Container.RegisterType<ICustomerAdapter, CustomerAdapter>();
+            this.Container.RegisterType<ICustomerManager, CustomerManager>();
+            this.Container.RegisterType<ICustomerRepository, CustomerRepository>();
         }
     }
 }

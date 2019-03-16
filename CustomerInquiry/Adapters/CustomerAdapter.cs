@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AutoMapper;
 using CustomerInquiry.Models;
 using CustomerInquiryBusiness.Managers;
 
 namespace CustomerInquiry.Adapters
 {
+    /// <summary>
+    /// Adapter for Customer related methods.
+    /// </summary>
     public class CustomerAdapter : ICustomerAdapter
     {
         private readonly ICustomerManager customerManager;
@@ -26,14 +30,16 @@ namespace CustomerInquiry.Adapters
         }
 
         /// <summary>
-        /// Gets Customer and his related Transactions
+        /// Gets Customer and its related Transactions
         /// </summary>
         /// <param name="customerID"></param>
         /// <param name="email"></param>
-        /// <returns></returns>
+        /// <returns>Customer and his related Transactions</returns>
         public Customer GetCustomer(int? customerID, string email = null)
         {
-            throw new NotImplementedException();
+            var customer = this.customerManager.GetCustomer(customerID, email);
+
+            return Mapper.Map<Customer>(customer);
         }
     }
 }

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace CustomerInquiryDataService.Repositories
 {
-    interface ICustomerRepository
+    public interface ICustomerRepository
     {
         /// <summary>
         /// Get Customer from DB
         /// </summary>
         /// <param name="customerID">Customer ID.</param>
         /// <param name="email">Customer email.</param>
-        /// <returns></returns>
+        /// <returns>Customer info.</returns>
         CustomerDBModel GetCustomer(int? customerID, string email = null);
     }
 }
