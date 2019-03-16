@@ -21,6 +21,7 @@ namespace CustomerInquiry.IoC
             this.Container.RegisterType<ICustomerAdapter, CustomerAdapter>();
             this.Container.RegisterType<ICustomerManager, CustomerManager>();
             this.Container.RegisterType<ICustomerRepository, CustomerRepository>();
+            this.Container.RegisterType<IDbContext, CustomerDBContext>();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CustomerInquiryBusiness.Managers
 
         private readonly IMapper mapper = new MapperConfiguration(cfg =>
         {
-            cfg.CreateMap<CustomerDBModel, CustomerBusinessModel>().ConvertUsing(new CustomerDataToCustomerConverter());
+            cfg.CreateMap<Customer, CustomerBusinessModel>().ConvertUsing(new CustomerDataToCustomerConverter());
         }).CreateMapper();
 
         /// <summary>

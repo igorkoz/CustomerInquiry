@@ -1,32 +1,32 @@
 ﻿using AutoMapper;
+using CustomerInquiry.Models;
 using CustomerInquiryBusiness.Models;
-using CustomerInquiryDataService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace CustomerInquiryBusiness.Converters
+namespace CustomerInquiry.Converters
 {
-    class CustomerDataToCustomerConverter : ITypeConverter<Customer, CustomerBusinessModel>
+    public class CustomerBMToCustomerConverter : ITypeConverter<CustomerBusinessModel, Customer>
     {
-        public CustomerBusinessModel Convert(Customer source, CustomerBusinessModel destination, ResolutionContext context)
+        public Customer Convert(CustomerBusinessModel source, Customer destination, ResolutionContext context)
         {
             if (destination == null)
             {
-                destination = new CustomerBusinessModel();
-            } 
+                destination = new Customer();
+            }
 
             if (source == null)
             {
                 return destination;
             }
 
-            destination.ID = source.ID;
+            destination.CustomerID = source.ID;
             destination.Email = source.Email;
             destination.Name = source.Name;
             destination.MobileNo = source.MobileNo;
+            destination.RecentTransactions = new List<Transaction>();
 
             return destination;
         }

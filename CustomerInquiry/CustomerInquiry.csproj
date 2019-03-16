@@ -109,6 +109,7 @@
     <Compile Include="Adapters\ICustomerAdapter.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Converters\CustomerBMToCustomerConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -116,6 +117,7 @@
     <Compile Include="IoC\UnityDependencyResolver.cs" />
     <Compile Include="IoC\UnityHelper.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

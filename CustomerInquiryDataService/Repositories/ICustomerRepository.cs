@@ -15,6 +15,6 @@ namespace CustomerInquiryDataService.Repositories
         /// <param name="customerID">Customer ID.</param>
         /// <param name="email">Customer email.</param>
         /// <returns>Customer info.</returns>
-        CustomerDBModel GetCustomer(int? customerID, string email = null);
+        Customer GetCustomer(int? customerID, string email = null);
     }
 }

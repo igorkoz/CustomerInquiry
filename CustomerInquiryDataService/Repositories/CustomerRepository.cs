@@ -12,9 +12,26 @@ namespace CustomerInquiryDataService.Repositories
     /// </summary>
     public class CustomerRepository : ICustomerRepository
     {
-        public CustomerDBModel GetCustomer(int? customerID, string email = null)
+        //private CustomerDBContext context = new CustomerDBContext();
+        private readonly IDbContext context;
+
+        public CustomerRepository(IDbContext context)
         {
-            throw new NotImplementedException();
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+            this.context = context;
+        }
+
+        public Customer GetCustomer(int? customerID, string email = null)
+        {
+            //var customers = context.Customers.ToList();
+            var result = (customerID.HasValue && !string.IsNullOrWhiteSpace(email))
+                ? context.Customers.Where(c => c.ID == customerID.Value && c.Email == email).FirstOrDefault()
+                : context.Customers.Where(c => (customerID.HasValue && c.ID == customerID.Value) || c.Email == email).FirstOrDefault();
+
+            return result;
         }
     }
 }

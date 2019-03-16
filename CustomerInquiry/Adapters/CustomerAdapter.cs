@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using CustomerInquiry.Converters;
 using CustomerInquiry.Models;
 using CustomerInquiryBusiness.Managers;
+using CustomerInquiryBusiness.Models;
 
 namespace CustomerInquiry.Adapters
 {
@@ -14,6 +16,10 @@ namespace CustomerInquiry.Adapters
     public class CustomerAdapter : ICustomerAdapter
     {
         private readonly ICustomerManager customerManager;
+        private readonly IMapper mapper = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<CustomerBusinessModel, Customer>().ConvertUsing(new CustomerBMToCustomerConverter());
+        }).CreateMapper();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerAdapter"/> class.
@@ -39,7 +45,7 @@ namespace CustomerInquiry.Adapters
         {
             var customer = this.customerManager.GetCustomer(customerID, email);
 
-            return Mapper.Map<Customer>(customer);
+            return this.mapper.Map<Customer>(customer);
         }
     }
 }
