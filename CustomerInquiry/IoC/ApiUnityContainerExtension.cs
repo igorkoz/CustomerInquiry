@@ -1,5 +1,6 @@
 ﻿using CustomerInquiry.Adapters;
 using CustomerInquiryBusiness.Managers;
+using CustomerInquiryBusiness.Validators;
 using CustomerInquiryDataService.Repositories;
 using Unity;
 using Unity.Extension;
@@ -22,6 +23,7 @@ namespace CustomerInquiry.IoC
             this.Container.RegisterType<ICustomerManager, CustomerManager>();
             this.Container.RegisterType<ICustomerRepository, CustomerRepository>();
             this.Container.RegisterType<IDbContext, CustomerDBContext>();
+            this.Container.RegisterType<IEMailValidator, EMailValidator>();
         }
     }
 }
