@@ -24,6 +24,6 @@ namespace CustomerInquiry.Models
         public string MobileNo { get; set; }
 
         [JsonProperty("transactions")]
-        public IEnumerable<Transaction> RecentTransactions { get; set; }
+        public IList<Transaction> RecentTransactions { get; set; }
     }
 }

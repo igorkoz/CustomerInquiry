@@ -23,6 +23,6 @@ namespace CustomerInquiry.Adapters
         /// <returns>
         /// Returns Customer by ID and/or email.
         /// </returns>
-        Customer GetCustomer(int? customerID, string email = null);
+        Customer GetCustomer(int? customerID, string email);
     }
 }

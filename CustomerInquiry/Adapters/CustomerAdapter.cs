@@ -41,7 +41,7 @@ namespace CustomerInquiry.Adapters
         /// <param name="customerID">Customer ID</param>
         /// <param name="email">Customer's email </param>
         /// <returns>Customer and his related Transactions</returns>
-        public Customer GetCustomer(int? customerID, string email = null)
+        public Customer GetCustomer(int? customerID, string email)
         {
             var customer = this.customerManager.GetCustomer(customerID, email);
 
