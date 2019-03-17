@@ -56,10 +56,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\CustomerDataToCustomerConverter.cs" />
+    <Compile Include="Converters\CustomerDataToCustomerBMConverter.cs" />
+    <Compile Include="Converters\TransactionDataToTransactionBMConverter.cs" />
     <Compile Include="Managers\CustomerManager.cs" />
     <Compile Include="Managers\ICustomerManager.cs" />
-    <Compile Include="Models\CustomerBusinessModel.cs" />
+    <Compile Include="Models\CustomerBM.cs" />
+    <Compile Include="Models\TransactionBM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

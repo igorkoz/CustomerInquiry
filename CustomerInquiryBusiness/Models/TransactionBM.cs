@@ -1,29 +1,20 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace CustomerInquiry.Models
+namespace CustomerInquiryBusiness.Models
 {
     /// <summary>
     /// Defines the Transaction properties
     /// </summary>
-    public class Transaction
+    public class TransactionBM
     {
-        [JsonProperty("id")]
         public int ID { get; set; }
-
-        [JsonProperty("date")]
-        public string TransactionDateTime { get; set; }
-
-        [JsonProperty("amount")]
+        public DateTime TransactionDateTime { get; set; }
         public decimal Amount { get; set; }
-
-        [JsonProperty("currency")]
         public string CurrencyCode { get; set; }
-
-        [JsonProperty("status")]
         public string Status { get; set; }
     }
 }

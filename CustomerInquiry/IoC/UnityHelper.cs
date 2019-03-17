@@ -12,14 +12,14 @@ using Unity.Injection;
 namespace CustomerInquiry.IoC
 {
     /// <summary>
-    /// Class for Unity Helper methods.
+    /// Class for Unity Helper methods
     /// </summary>
     public static class UnityHelper
     {
         /// <summary>
-        /// Initialize the unity container with required interface mapping.
+        /// Initialize the Unity container with required interface mapping
         /// </summary>
-        /// <param name="container">Unity container.</param>
+        /// <param name="container">Unity container</param>
         public static void InitializeDependencyContainer(IUnityContainer container)
         {
             container.AddExtension(new ApiUnityContainerExtension());

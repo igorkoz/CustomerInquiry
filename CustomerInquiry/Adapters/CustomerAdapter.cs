@@ -18,13 +18,13 @@ namespace CustomerInquiry.Adapters
         private readonly ICustomerManager customerManager;
         private readonly IMapper mapper = new MapperConfiguration(cfg =>
         {
-            cfg.CreateMap<CustomerBusinessModel, Customer>().ConvertUsing(new CustomerBMToCustomerConverter());
+            cfg.CreateMap<CustomerBM, Customer>().ConvertUsing(new CustomerBMToCustomerConverter());
         }).CreateMapper();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomerAdapter"/> class.
+        /// Initializes a new instance of the <see cref="CustomerAdapter"/> class
         /// </summary>
-        /// <param name="customerManager">The Customer Manager.</param>
+        /// <param name="customerManager">The Customer Manager</param>
         public CustomerAdapter(ICustomerManager customerManager)
         {
             if (customerManager == null)
@@ -38,8 +38,8 @@ namespace CustomerInquiry.Adapters
         /// <summary>
         /// Gets Customer and its related Transactions
         /// </summary>
-        /// <param name="customerID"></param>
-        /// <param name="email"></param>
+        /// <param name="customerID">Customer ID</param>
+        /// <param name="email">Customer's email </param>
         /// <returns>Customer and his related Transactions</returns>
         public Customer GetCustomer(int? customerID, string email = null)
         {

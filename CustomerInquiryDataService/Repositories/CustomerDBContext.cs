@@ -14,9 +14,10 @@ namespace CustomerInquiryDataService.Repositories
     {
         public CustomerDBContext() : base("name = DBConnectionString")
         {
-            //Database.SetInitializer<CustomerDBContext>(new CustomerDbInitializer());
+            Database.SetInitializer<CustomerDBContext>(new DbInitializer());
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
     }
 }

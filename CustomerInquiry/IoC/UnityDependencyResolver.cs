@@ -8,7 +8,7 @@ using Unity;
 namespace CustomerInquiry.IoC
 {
     /// <summary>
-    /// Represent Unity IoC container.
+    /// Represent Unity IoC container
     /// </summary>
     public class UnityDependencyResolver : IDependencyResolver
     {
@@ -17,10 +17,10 @@ namespace CustomerInquiry.IoC
         private bool disposed;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="UnityDependencyResolver" /> class.
+        /// Initializes a new instance of the <see cref="UnityDependencyResolver" /> class
         /// </summary>
-        /// <param name="container">The container.</param>
-        /// <param name="typeStringsToIgnore">The type strings to ignore.</param>
+        /// <param name="container">Container</param>
+        /// <param name="typeStringsToIgnore">Type strings to ignore</param>
         public UnityDependencyResolver(IUnityContainer container, IEnumerable<string> typeStringsToIgnore = null)
         {
             if (container == null)
@@ -42,11 +42,11 @@ namespace CustomerInquiry.IoC
         }
 
         /// <summary>
-        ///     Retrieves a service from the scope.
+        /// Retrieves a service from the scope
         /// </summary>
-        /// <param name="serviceType">The service to be retrieved.</param>
+        /// <param name="serviceType">The service to be retrieved</param>
         /// <returns>
-        ///     The retrieved service.
+        /// The retrieved service
         /// </returns>
         public object GetService(Type serviceType)
         {
@@ -66,11 +66,11 @@ namespace CustomerInquiry.IoC
         }
 
         /// <summary>
-        ///     Retrieves a service from the scope.
+        /// Retrieves a service from the scope
         /// </summary>
-        /// <param name="serviceType">The service to be retrieved.</param>
+        /// <param name="serviceType">The service to be retrieved</param>
         /// <returns>
-        ///     The retrieved service.
+        /// The retrieved service
         /// </returns>
         public IEnumerable<object> GetServices(Type serviceType)
         {
@@ -90,7 +90,7 @@ namespace CustomerInquiry.IoC
         }
 
         /// <summary>
-        /// Dispose the container.
+        /// Dispose the container
         /// </summary>
         public void Dispose()
         {
@@ -99,9 +99,9 @@ namespace CustomerInquiry.IoC
         }
 
         /// <summary>
-        /// Dispose the container.
+        /// Dispose the container
         /// </summary>
-        /// <param name="disposing">Type of the service.</param>
+        /// <param name="disposing">Type of the service</param>
         protected virtual void Dispose(bool disposing)
         {
             if (this.disposed)
@@ -118,10 +118,10 @@ namespace CustomerInquiry.IoC
         }
 
         /// <summary>
-        /// Ignores the error.
+        /// Ignores the error
         /// </summary>
-        /// <param name="serviceType">Type of the service.</param>
-        /// <returns>Returns <c>true</c> if type contains in list to ignore else <c>false</c>.</returns>
+        /// <param name="serviceType">Type of the service</param>
+        /// <returns>Returns <c>true</c> if type contains in list to ignore else <c>false</c></returns>
         private bool IgnoreError(Type serviceType)
         {
             var serviceTypeString = serviceType.FullName;

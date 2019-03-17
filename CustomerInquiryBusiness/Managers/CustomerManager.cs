@@ -12,7 +12,7 @@ using CustomerInquiryDataService.Repositories;
 namespace CustomerInquiryBusiness.Managers
 {
     /// <summary>
-    /// Represents methods for managing Customer entities in application.
+    /// Represents methods for managing Customer entities in application
     /// </summary>
     public class CustomerManager : ICustomerManager
     {
@@ -20,25 +20,26 @@ namespace CustomerInquiryBusiness.Managers
 
         private readonly IMapper mapper = new MapperConfiguration(cfg =>
         {
-            cfg.CreateMap<Customer, CustomerBusinessModel>().ConvertUsing(new CustomerDataToCustomerConverter());
+            cfg.CreateMap<Customer, CustomerBM>().ConvertUsing(new CustomerDataToCustomerBMConverter());
         }).CreateMapper();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomerManager"/> class.
+        /// Initializes a new instance of the <see cref="CustomerManager"/> class
         /// </summary>
         /// <param name="customerRepository">
-        /// The Customer Repository.
+        /// The Customer Repository
         /// </param>
         public CustomerManager(ICustomerRepository customerRepository)
         {
             this.customerRepository = customerRepository ?? throw new ArgumentNullException(nameof(customerRepository));
         }
 
-        public CustomerBusinessModel GetCustomer(int? customerID, string email = null)
+        /// <inheritdoc/>
+        public CustomerBM GetCustomer(int? customerID, string email)
         {
             var customer = this.customerRepository.GetCustomer(customerID, email);
 
-            return this.mapper.Map<CustomerBusinessModel>(customer);
+            return this.mapper.Map<CustomerBM>(customer);
         }
     }
 }

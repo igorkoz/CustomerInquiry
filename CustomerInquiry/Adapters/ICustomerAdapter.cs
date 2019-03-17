@@ -6,13 +6,16 @@ using System.Web;
 
 namespace CustomerInquiry.Adapters
 {
+    /// <summary>
+    /// Defines methods for Customer Adapter
+    /// </summary>
     public interface ICustomerAdapter
     {
         /// <summary>
         /// Gets a Customer.
         /// </summary>
         /// <param name="customerID">
-        /// Customer's ID.
+        /// Customer ID.
         /// </param>
         /// <param name="email">
         /// Customer's email.

@@ -1,21 +1,22 @@
 ﻿using AutoMapper;
-using CustomerInquiry.Models;
 using CustomerInquiryBusiness.Models;
+using CustomerInquiryDataService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CustomerInquiry.Converters
+namespace CustomerInquiryBusiness.Converters
 {
     /// <summary>
-    /// Converts <see cref="CustomerBM"/> to <see cref="Customer"/> for Get operation
+    /// Converts <see cref="Customer"/> to <see cref="CustomerBM"/> for Get operation
     /// </summary>
-    public class CustomerBMToCustomerConverter : ITypeConverter<CustomerBM, Customer>
+    public class CustomerDataToCustomerBMConverter : ITypeConverter<Customer, CustomerBM>
     {
         private readonly IMapper mapper = new MapperConfiguration(cfg =>
         {
-            cfg.CreateMap<TransactionBM, Transaction>().ConvertUsing(new TransactionBMToTransactionConverter());
+            cfg.CreateMap<Transaction, TransactionBM>().ConvertUsing(new TransactionDataToTransactionBMConverter());
         }).CreateMapper();
 
         /// <summary>
@@ -25,23 +26,23 @@ namespace CustomerInquiry.Converters
         /// <param name="destination">Destination object</param>
         /// <param name="context">Resolution context</param>
         /// <returns>Destination object</returns>
-        public Customer Convert(CustomerBM source, Customer destination, ResolutionContext context)
+        public CustomerBM Convert(Customer source, CustomerBM destination, ResolutionContext context)
         {
             if (destination == null)
             {
-                destination = new Customer();
-            }
+                destination = new CustomerBM();
+            } 
 
             if (source == null)
             {
                 return destination;
             }
 
-            destination.CustomerID = source.ID;
+            destination.ID = source.ID;
             destination.Email = source.Email;
             destination.Name = source.Name;
             destination.MobileNo = source.MobileNo;
-            destination.RecentTransactions = this.mapper.Map<IList<Transaction>>(source.Transactions.OrderByDescending(t => t.TransactionDateTime).Take(5));
+            destination.Transactions = this.mapper.Map< IList<TransactionBM>>(source.Transactions);
 
             return destination;
         }

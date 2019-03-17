@@ -42,15 +42,15 @@ namespace CustomerInquiry.Controllers
         /// Customer with his Transactions in System.
         /// </returns>
         [HttpGet]
-        [Route("api/customer/{customerID}")]
-        public IHttpActionResult GetCustomer(int? customerID, string email = null)
+        [Route("api/customer")]
+        public IHttpActionResult GetCustomer([FromUri] int? customerID = null, [FromUri] string email = null)
         {
             if (customerID is null && String.IsNullOrWhiteSpace(email))
-                return (IHttpActionResult)BadRequest();
+                return (IHttpActionResult)BadRequest($"{nameof(customerID)} and/or {nameof(email)} should not be NULL");
 
             var result = this.customerAdapter.GetCustomer(customerID, email);
 
-            return result == null ? (IHttpActionResult)BadRequest("Not Found") : Ok(result);
+            return result == null ? (IHttpActionResult)NotFound() : Ok(result);
         }
     }
 }
